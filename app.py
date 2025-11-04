@@ -26,7 +26,7 @@ def ensure_files():
         st.warning("Downloading model files from release... please wait ⏳")
 
         # 🔗 Replace this with your actual ZIP release URL
-        url = "https://github.com/VandiitaHirani/next_word_app/releases/q1_files.zip"
+        url = "https://github.com/VandiitaHirani/next_word_app/releases/download/dataset/q1_files.zip"
 
         urllib.request.urlretrieve(url, "q1_files.zip")
 
