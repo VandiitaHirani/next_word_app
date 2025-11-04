@@ -16,6 +16,27 @@ import numpy as np
 # =========================
 # Utility & Tokenizer
 # =========================
+import os, zipfile, urllib.request
+
+# ==============================
+# 🔽 Download tokenizer & models if missing
+# ==============================
+def ensure_files():
+    if not os.path.exists("tokenizer.pkl"):
+        st.warning("Downloading model files from release... please wait ⏳")
+
+        # 🔗 Replace this with your actual ZIP release URL
+        url = "https://github.com/VandiitaHirani/next_word_app/releases/q1_files.zip"
+
+        urllib.request.urlretrieve(url, "q1_files.zip")
+
+        # Extract
+        with zipfile.ZipFile("q1_files.zip", "r") as zip_ref:
+            zip_ref.extractall(".")
+        st.success("✅ Model files downloaded and extracted!")
+
+# Run before loading tokenizer
+ensure_files()
 @st.cache_resource
 def load_tokenizer():
     with open("tokenizer.pkl", "rb") as f:
